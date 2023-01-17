@@ -1,16 +1,13 @@
 <a href="/">Takaisin</a>
-@foreach ($tehtävät as $tehtävä)
+@foreach ($joukkueet as $joukkue)
 <h1>
-    {{$tehtävä['tehtäväNimi']}}
+    {{$joukkue['joukkueNimi']}}
 </h1>
 <p>
-    Max Aika: {{$tehtävä['maxAika']}}
+    {{$joukkue['jäsenet']}}
 </p>
-</form>
-@csrf
-<td><a href = 'delete/{{ $tehtävä->id }}'>Poista</a></td>
+<td><a href = 'delete/{{ $joukkue->id }}'>Poista</a></td>
 @endforeach
 <br>
 <br>
-<a href="/Joukkueet/lisaa">Lisää tehtävä</a>
-
+<a href="/Joukkueet/lisaa">Lisää Joukkue</a>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Joukkue extends Model
 {
-    protected $fillable = ['JoukkueNimi', 'jäsenet'];
+    protected $fillable = ['joukkueNimi', 'jäsenet'];
     public $table = 'joukkueet';
+    
 }
