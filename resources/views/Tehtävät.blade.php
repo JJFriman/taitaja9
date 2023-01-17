@@ -1,13 +1,15 @@
 <a href="/">Takaisin</a>
-@foreach ($joukkueet as $joukkue)
+@foreach ($tehtävät as $tehtävä)
 <h1>
-    {{$joukkue['joukkueNimi']}}
+    {{$tehtävä['tehtäväNimi']}}
 </h1>
 <p>
-    {{$joukkue['jäsenet']}}
+    Max Aika: {{$tehtävä['maxAika']}}
 </p>
-<td><a href = 'delete/{{ $joukkue->id }}'>Poista</a></td>
+
+<td><a href = 'delete/{{ $tehtävä->id }}'>Poista</a></td>
 @endforeach
 <br>
 <br>
-<a href="/Joukkueet/lisaa">Lisää Joukkue</a>
+<a href="/Joukkueet/lisaa">Lisää tehtävä</a>
+

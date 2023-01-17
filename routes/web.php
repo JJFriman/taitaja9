@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Aika;
 use App\Models\Joukkue;
 use App\Models\Tehtävä;
 use Illuminate\HTTP\Request;
@@ -41,8 +40,7 @@ Route::get('/', function () {
 });
 Route::get('/Joukkueet', function() {
     return view('Joukkueet', [
-        'joukkueet' => Joukkue::all(),
-        'heading' => 'Not Working'
+        'joukkueet' => Joukkue::all()
     ]);
 });
 
@@ -58,9 +56,7 @@ Route::get('/Tehtävät', function() {
 });
 
 Route::get('/Ajanotto', function() {
-    return view('Ajanotto', [
-        'heading' => 'Not Working'
-    ]);
+    return view('Ajanotto');
 });
 
 Route::get('delete/{id}', [PostController::class, 'destroy']);

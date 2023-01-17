@@ -1,4 +1,3 @@
-<h1>{{$heading}}</h1>
 <a href="/">Takaisin</a>
 @foreach ($joukkueet as $joukkue)
 <h1>
