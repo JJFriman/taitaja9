@@ -18,13 +18,13 @@ class PostController extends Controller
             $post->joukkueNimi = $request->joukkueNimi;
             $post->jäsenet = $request->jäsenet;
             $post->save();
-            return redirect('/Joukkueet')->with('status', 'Joukkue lisätty');
+            return redirect('/joukkueet')->with('status', 'Joukkue lisätty');
         }
 
         public function destroy($id) {
             DB::delete('delete from joukkueet where id = ?',[$id]);
             echo "Joukkue poistettu.";
-            echo '<a href = "/Joukkueet">Paina tästä</a> Päästääksesi takaisin.';
+            echo '<a href = "/joukkueet">Paina tästä</a> Päästääksesi takaisin.';
 
         }
 

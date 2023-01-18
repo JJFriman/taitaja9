@@ -10,4 +10,5 @@
 @endforeach
 <br>
 <br>
-<a href="/Joukkueet/lisaa">Lisää Joukkue</a>
+<a href="/joukkueet/lisaa">Lisää Joukkue</a>
+

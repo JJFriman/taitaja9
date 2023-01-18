@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Joukkue extends Model
+class Aika extends Model
 {
+    protected $fillable = ['tehtävä', 'joukkue'];
     public $table = 'aikataulu';
 }

@@ -11,7 +11,9 @@ class AikaController extends Controller
     
     public function store_time(Request $request)
     {
-        $post = new Joukkue;
+        $post = new Aika;
+        $post->joukkue = $request->joukkue;
+        $post->tehtävä = $request->tehtävä;
         $post->aika = $request->aika;
         $post->save();
     }

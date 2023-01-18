@@ -1,4 +1,4 @@
-<a href="/Joukkueet">Takaisin</a>
+<a href="/joukkueet">Takaisin</a>
 <form method="POST" action="{{url('store-form')}}">
     @csrf
         <label

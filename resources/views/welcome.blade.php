@@ -1,6 +1,8 @@
+<h1>{{$heading}}</h1>
+
 @foreach ($valilehdet as $valilehti)
 <h1>
     <a href="/{{$valilehti['nimi']}}">
-    {{$valilehti['nimi']}}</a>
+    {{ucfirst($valilehti['nimi'])}}</a>
 </h1>
 @endforeach

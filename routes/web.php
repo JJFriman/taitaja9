@@ -5,6 +5,7 @@ use App\Models\Tehtävä;
 use Illuminate\HTTP\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AikaController;
 use App\Http\Controllers\PostController;
 
 /*
@@ -18,51 +19,50 @@ use App\Http\Controllers\PostController;
 |
 */
 Route::get('/', function () {
-    return view('index', [
+    return view('welcome', [
+        'heading' => 'Taitajat9',
         'valilehdet' => [
-        [
-            'id' => 1,
-            'nimi' => 'Joukkueet'
-        ],
-        [
-            'id' => 2,
-            'nimi' => 'Tehtävät'
-        ],
-        [
-            'id' => 3,
-            'nimi' => 'Ajanotto'
-        ],
-        [
-            'id' => 4,
-            'nimi' => 'Tulokset'
-        ],
-    ]]);
+            [
+                'id' => 1,
+                'nimi' => 'joukkueet'
+            ],
+            [
+                'id' => 2,
+                'nimi' => 'tehtävät'
+            ],
+            [
+                'id' => 3,
+                'nimi' => 'ajanotto'
+            ],
+            [
+                'id' => 4,
+                'nimi' => 'tulokset'
+            ],
+]]);
 });
-Route::get('/Joukkueet', function() {
-    return view('Joukkueet', [
+
+Route::get('/joukkueet', function() {
+    return view('joukkueet', [
         'joukkueet' => Joukkue::all()
     ]);
 });
 
-Route::get('/Joukkueet/lisaa', function() {
-    return view('Joukkueet.lisaa', [
+Route::get('/joukkueet/lisaa', function() {
+    return view('joukkueet.lisaa', [
     ]);
 });
 
-Route::get('/Tehtävät', function() {
-    return view('Tehtävät', [
+Route::get('/tehtävät', function() {
+    return view('tehtävät', [
         'tehtävät' => Tehtävä::all()
     ]);
 });
 
-Route::get('/Ajanotto', function() {
-    return view('Ajanotto');
+Route::get('/ajanotto', function() {
+    return view('ajanotto', [
+        'tehtävät' => Tehtävä::all(),
+        'joukkueet' => Joukkue::all()
+    ]);
 });
 
-Route::get('delete/{id}', [PostController::class, 'destroy']);
-
-Route::post('store-form', [PostController::class, 'store']);
-
 Route::post('store-time', [AikaController::class, 'store_time']);
-
-
