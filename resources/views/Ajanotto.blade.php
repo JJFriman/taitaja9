@@ -36,7 +36,7 @@
             <input
                 type="text"
                 name="aika"
-                placeholder={{$displayTime}}/>
+                placeholder=/>
                 @error('aika')
                     <p>Pakollinen</p>
                 @enderror
