@@ -11,6 +11,11 @@ class AikaController extends Controller
     
     public function store_time(Request $request)
     {
+        $formFields = $request->validate([
+            'aika' => 'required',
+            'joukkue' => 'required',
+            'tehtävä' => 'required'
+        ]);
         $post = new Aika;
         $post->joukkue = $request->joukkue;
         $post->tehtävä = $request->tehtävä;

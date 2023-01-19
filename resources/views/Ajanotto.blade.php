@@ -1,4 +1,6 @@
 <body>
+<?php
+?>
     <form method="POST" action="{{url('store-time')}}">
         @csrf
             <label
@@ -7,12 +9,12 @@
             <select
                 type="text"
                 name="joukkue">
-                <option selected>Joukkue</option>
+                <option selected></option>
                 @foreach($joukkueet as $joukkue)
                 <option value="{{$joukkue->joukkueNimi}}">{{$joukkue->joukkueNimi}}</option>
                 @endforeach
                 @error('joukkue')
-                    <p>Pakollinen/Uniikki</p>
+                    <p>Pakollinen</p>
                 @enderror</select>
     
             <label
@@ -21,12 +23,12 @@
             <select
                 type="text"
                 name="tehtävä">
-                <option selected>Tehtävä</option>
+                <option selected></option>
                 @foreach($tehtävät as $tehtävä)
                 <option value="{{$tehtävä->tehtäväNimi}}">{{$tehtävä->tehtäväNimi}}</option>
                 @endforeach
                 @error('tehtävä')
-                    <p>Pakollinen/Uniikki</p>
+                    <p>Pakollinen</p>
                 @enderror</select>
 
                 <label for="aika"
@@ -34,7 +36,7 @@
             <input
                 type="text"
                 name="aika"
-                placeholder="10:00:00"/>
+                placeholder={{$displayTime}}/>
                 @error('aika')
                     <p>Pakollinen</p>
                 @enderror
