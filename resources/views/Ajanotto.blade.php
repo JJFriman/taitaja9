@@ -75,7 +75,6 @@
     let [milliseconds, seconds, minutes] = [0,0,0]; 
     let displayTime = document.getElementById("displayTime");
     let timer = null;
-    var currentTime;
     var mama = "00:00:00";
 
     function stopwatch() {
@@ -93,7 +92,7 @@
         let s = seconds < 10 ? "0" + seconds : seconds;
         let m = minutes < 10 ? "0" + minutes : minutes;
 
-        let currentTime = m +":"+ s +":"+ ms;
+        currentTime = m +":"+ s +":"+ ms;
 
         displayTime.innerHTML = currentTime;
 
@@ -108,7 +107,7 @@
         timer = setInterval(stopwatch, 10);
     }
 
-    function watchStop(currentTime) {
+    function watchStop() {
         clearInterval(timer);
         let url = '/showTime'
         let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -121,7 +120,7 @@
                   "X-Requested-With": "XMLHttpRequest",
                   "X-CSRF-TOKEN": token
                   },
-        "body": JSON.stringify(mama)
+        "body": JSON.stringify(currentTime)
     }).then(function(response){
         return response.json();
     }).then(function(data){
