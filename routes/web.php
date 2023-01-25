@@ -65,4 +65,10 @@ Route::get('/ajanotto', function() {
     ]);
 });
 
+Route::get('/destination.php', function() {
+    return view('destination');
+});
+
+Route::post('showTime', [AikaController::class, 'getTime']);
+
 Route::post('store-time', [AikaController::class, 'store_time']);

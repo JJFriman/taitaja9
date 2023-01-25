@@ -1,6 +1,5 @@
 <body>
-<?php
-?>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <form method="POST" action="{{url('store-time')}}">
         @csrf
             <label
@@ -36,7 +35,7 @@
             <input
                 type="text"
                 name="aika"
-                placeholder=/>
+                placeholder=""/>
                 @error('aika')
                     <p>Pakollinen</p>
                 @enderror
@@ -76,10 +75,12 @@
     let [milliseconds, seconds, minutes] = [0,0,0]; 
     let displayTime = document.getElementById("displayTime");
     let timer = null;
+    var currentTime;
+    var mama = "00:00:00";
 
     function stopwatch() {
         milliseconds++;
-        if(milliseconds == 1000) {
+        if(milliseconds == 100) {
             milliseconds = 0;
             seconds++;
             if(seconds == 60){
@@ -88,10 +89,15 @@
             }
         }
 
+        let ms = milliseconds < 10 ? "0" + milliseconds : milliseconds;
         let s = seconds < 10 ? "0" + seconds : seconds;
         let m = minutes < 10 ? "0" + minutes : minutes;
 
-        displayTime.innerHTML = m +":"+ s +":"+ milliseconds;
+        let currentTime = m +":"+ s +":"+ ms;
+
+        displayTime.innerHTML = currentTime;
+
+        
     }
 
     function startWatch() {
@@ -99,17 +105,35 @@
         {
             clearInterval(timer);
         }
-        timer = setInterval(stopwatch, 1);
+        timer = setInterval(stopwatch, 10);
     }
 
-    function watchStop(){
+    function watchStop(currentTime) {
         clearInterval(timer);
+        let url = '/showTime'
+        let token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        //console.log(currentTime);
+        fetch(url, {
+        "method": "POST",
+        headers: {
+                  "Content-Type": "application/json",
+                  "Accept": "application/json, text-plain, */*",
+                  "X-Requested-With": "XMLHttpRequest",
+                  "X-CSRF-TOKEN": token
+                  },
+        "body": JSON.stringify(mama)
+    }).then(function(response){
+        return response.json();
+    }).then(function(data){
+        console.log(data);
+    })
     }
 
     function watchReset(){
         clearInterval(timer);
-        let [milliseconds, seconds, minutes] = [0,0,0];
+        [milliseconds, seconds, minutes] = [0,0,0];
         displayTime.innerHTML = "00:00:00";
     }
+    
 </script>
 </body>

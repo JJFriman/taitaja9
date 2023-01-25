@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aika extends Model
 {
-    protected $fillable = ['tehtävä', 'joukkue'];
+    protected $fillable = ['aika', 'tehtävä', 'joukkue'];
     public $table = 'aikataulu';
 }
