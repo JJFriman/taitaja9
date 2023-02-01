@@ -6,6 +6,7 @@
                 for="joukkue"
                 >Joukkue</label>
             <select
+                id="joukkue"
                 type="text"
                 name="joukkue">
                 <option selected></option>
@@ -75,7 +76,6 @@
     let [milliseconds, seconds, minutes] = [0,0,0]; 
     let displayTime = document.getElementById("displayTime");
     let timer = null;
-    var mama = "00:00:00";
 
     function stopwatch() {
         milliseconds++;

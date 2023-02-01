@@ -36,6 +36,10 @@ Route::get('/', function () {
             ],
             [
                 'id' => 4,
+                'nimi' => 'kilpailu'
+            ],
+            [
+                'id' => 5,
                 'nimi' => 'tulokset'
             ],
 ]]);
@@ -65,8 +69,11 @@ Route::get('/ajanotto', function() {
     ]);
 });
 
-Route::get('/destination.php', function() {
-    return view('destination');
+Route::get('/kilpailu', function() {
+    return view('kilpailu', [
+        'tehtävät' => Tehtävä::all(),
+        'joukkueet' => Joukkue::all()->shuffle()
+    ]);
 });
 
 Route::post('showTime', [AikaController::class, 'getTime']);
