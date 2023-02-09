@@ -72,7 +72,8 @@ Route::get('/ajanotto', function() {
 Route::get('/kilpailu', function() {
     return view('kilpailu', [
         'tehtävät' => Tehtävä::all(),
-        'joukkueet' => Joukkue::all()->shuffle()
+        'joukkueet' => Joukkue::inRandomOrder()->paginate(6),
+        
     ]);
 });
 

@@ -9,4 +9,5 @@ class Joukkue extends Model
 {
     protected $fillable = ['JoukkueNimi', 'jäsenet'];
     public $table = 'joukkueet';
+
 }
